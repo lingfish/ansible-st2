@@ -19,7 +19,7 @@
 
 - name: Set backend_kwargs in st2.conf
   become: yes
-  no_log: yes
+  no_log: no
   ini_file:
     dest: /etc/st2/st2.conf
     section: auth
