@@ -19,13 +19,13 @@
 
 - name: Set backend_kwargs in st2.conf
   become: yes
-  no_log: no
+  no_log: yes
   ini_file:
     dest: /etc/st2/st2.conf
     section: auth
     option: backend_kwargs
-    value: "{{ _conf_options.auth.backend_kwargs | to_json | string }}"
-  when: _conf_options.auth.backend_kwargs is defined and _conf_options.auth.backend_kwargs|length > 0
+    value: "{{ _conf_section.auth.backend_kwargs | to_json | string }}"
+  when: _conf_section.auth.backend_kwargs is defined and _conf_section.auth.backend_kwargs|length > 0
   notify:
     - restart st2api
     - restart st2stream
