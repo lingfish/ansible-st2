@@ -27,6 +27,5 @@
     value: "{{ st2_config.auth.backend_kwargs | to_json | string }}"
   when: st2_config.auth.backend_kwargs is defined and st2_config.auth.backend_kwargs|length > 0
   notify:
-    - restart st2api
-    - restart st2stream
+    - restart st2
   tags: st2, config, auth
