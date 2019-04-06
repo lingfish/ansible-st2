@@ -22,7 +22,7 @@
   command: st2 auth "{{ st2_auth_username }}" -p "{{ st2_auth_password }}" -t
   register: st2_token
   changed_when: no
-  when: st2_auth_enabled
+  when: st2_auth_enable
   tags:
     - smoke-tests
 
@@ -31,7 +31,7 @@
   environment:
     ST2_AUTH_TOKEN: "{{ st2_token.stdout }}"
   changed_when: no
-  when: st2_auth_enabled
+  when: st2_auth_enable
   tags:
     - smoke-tests
 
@@ -49,7 +49,7 @@
     ST2_AUTH_TOKEN: "{{ st2_token.stdout }}"
   command: "st2 pack install st2"
   changed_when: no
-  when: st2_auth_enabled
+  when: st2_auth_enable
   tags:
     - smoke-tests
 
