@@ -24,8 +24,8 @@
     dest: /etc/st2/st2.conf
     section: auth
     option: backend_kwargs
-    value: "{{ _conf_section.auth.backend_kwargs | to_json | string }}"
-  when: _conf_section.auth.backend_kwargs is defined and _conf_section.auth.backend_kwargs|length > 0
+    value: "{{ st2_config.auth.backend_kwargs | to_json | string }}"
+  when: st2_config.auth.backend_kwargs is defined and st2_config.auth.backend_kwargs|length > 0
   notify:
     - restart st2api
     - restart st2stream
